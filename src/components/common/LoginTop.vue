@@ -2,8 +2,10 @@
   <div>
       <div class="LoginTop">
           <div></div>
-          <div>{{Text}}</div>
-          <div></div>
+          <div class="topText">{{Text}}</div>
+          <div class="topRight">
+            <slot name="right"></slot>
+          </div>
       </div>
   </div>
 </template>
@@ -24,5 +26,8 @@ export default {
     display flex
     justify-content center
     align-items center
+  .topText
     font-size 4.267vw
+  .topRight
+    font-size 3.2vw
 </style>

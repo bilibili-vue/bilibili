@@ -5,12 +5,9 @@
 </template>
 
 <script>
-// import loginDetail from "./views/Login"
 
 export default{
-  // components:{
-  //   loginDetail
-  // }
+
 }
 </script>
 

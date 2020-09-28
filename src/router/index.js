@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import register from '@/views/register.vue'
-
+import login from '@/views/login.vue'
 
 
 
@@ -13,6 +13,10 @@ const routes = [
   {
     path:'/register',
     component:register
+  },
+  {
+    path:'/login',
+    component:login
   },
   // {
   //   path: '/',

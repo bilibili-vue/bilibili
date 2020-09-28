@@ -1,12 +1,17 @@
 <template>
-  <div>
+  <div @click="registerClick">
       <div class="LoginBtn">{{Btn}}</div>
   </div>
 </template>
 
 <script>
 export default {
-    props:['Btn']
+    props:['Btn'],
+    methods:{
+      registerClick(){
+        this.$emit('registerSubmit')
+      }
+    }
 
 }
 </script>
