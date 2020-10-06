@@ -7,7 +7,13 @@
 <script>
 
 export default{
-
+  // mounted() {
+  //   fetch('/proxyApi/x/web-interface/ranking/region?rid=24&day=7&context=')
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       console.log(result)
+  //     })
+  // }
 }
 </script>
 

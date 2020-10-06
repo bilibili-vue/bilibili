@@ -18,6 +18,8 @@ const routes = [
     path:'/login',
     component:login
   },
+
+
   // {
   //   path: '/',
   //   name: 'Home',
