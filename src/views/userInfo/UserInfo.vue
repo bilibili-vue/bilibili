@@ -20,7 +20,7 @@
 </template>
 <script>
 import http from '../../../http.js'
-import NavBar from '@c/NavBar.vue'
+import navBar from '@c/navBar.vue'
 import ShowInfo from '@v/userInfo/showInfo/ShowInfo.vue'
 import InfoDetail from '@v/userInfo/infoDetail/InfoDetail.vue'
 import InfoTabs from '@v/userInfo/infoTabs/InfoTabs.vue'
@@ -40,7 +40,8 @@ export default {
         InfoTabs,
         SpaceFooter,
         ActiveList,
-        AlbumList
+        AlbumList,
+        navBar
     },
     async mounted(){
         let result=await http.get('/proxyApi/x/web-interface/nav');
