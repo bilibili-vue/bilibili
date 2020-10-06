@@ -1,30 +1,30 @@
 {
-  "name": "bilibili",
+  "name": "genshuixue",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "mock": "json-server ./src/mock/mock.js -p 9000 -w"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "babel-plugin-import": "^1.13.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.20",
     "vant": "^2.10.8",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.5",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "stylus": "^0.54.7",
+    "@vue/cli-plugin-babel": "^4.5.6",
+    "@vue/cli-plugin-router": "^4.5.6",
+    "@vue/cli-plugin-vuex": "^4.5.6",
+    "@vue/cli-service": "^4.5.6",
+    "babel-plugin-import": "^1.13.0",
+    "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "main": "index.js",
-  "repository": "git@github.com:bilibili-vue/bilibili.git",
-  "author": "hanmin <1799930668@qq.com>",
-  "license": "MIT"
+    "vue-template-compiler": "^2.6.12"
+  }
 }
