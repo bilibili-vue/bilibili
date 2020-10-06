@@ -23,8 +23,13 @@ const routes = [
   },
   {
     path:'/article/:bvid',
-    component:()=>import("../views/articleDetail")  //优化，异步加载路由，只有用到这个组建的时候才会加载它的js文件，在开头用import的话则会一起全部加载
+    component:()=>import("../views/articleDetail"), //优化，异步加载路由，只有用到这个组建的时候才会加载它的js文件，在开头用import的话则会一起全部加载
   },
+  {
+    path:'/userInfo/:mid',
+    component:()=>import("../views/userInfo/UserInfo"),
+  }
+
 ]
   // {
   //   path: '/',

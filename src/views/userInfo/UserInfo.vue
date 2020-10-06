@@ -4,13 +4,16 @@
         <div class="content">
             <div class="banner">
             </div>
-            <show-info></show-info>
-            <info-detail></info-detail>
+            <show-info :followingData="followingData" :userInfo="userInfo"></show-info>
+            <info-detail :userInfo="userInfo"></info-detail>
         </div>
-        <info-tabs></info-tabs>
+        <div class="tabs">
+            <span :class="{on:exchange}" @click="exchangeClick">视频</span>
+            <span :class="{on:!exchange}" @click="exchangeClick">相簿</span>
+        </div>
         <div class="list">
-            <active-list style="display:none"></active-list>
-            <album-list></album-list>
+            <active-list v-if="exchange"></active-list>
+            <album-list v-else></album-list>
         </div>
         <div class="m-space-float-openapp">
             APP内打开
@@ -19,11 +22,10 @@
     </div>
 </template>
 <script>
-import http from '../../../http.js'
-import navBar from '@c/navBar.vue'
+import http from '@a/Utils/http.js'
+import navBar from '@c/common/navBar.vue'
 import ShowInfo from '@v/userInfo/showInfo/ShowInfo.vue'
 import InfoDetail from '@v/userInfo/infoDetail/InfoDetail.vue'
-import InfoTabs from '@v/userInfo/infoTabs/InfoTabs.vue'
 import SpaceFooter from '@v/userInfo/spaceFooter/SpaceFooter.vue'
 import ActiveList from '@v/userInfo/infoList/ActiveList.vue'
 import AlbumList from '@v/userInfo/infoList/AlbumList'
@@ -31,23 +33,46 @@ import AlbumList from '@v/userInfo/infoList/AlbumList'
 export default {
     data(){
         return {
-           infoData:{}
+            followingData:{},
+            userInfo:{},
+            exchange:1
         }
     },
     components:{
         ShowInfo,
         InfoDetail,
-        InfoTabs,
         SpaceFooter,
         ActiveList,
         AlbumList,
         navBar
     },
-    async mounted(){
-        let result=await http.get('/proxyApi/x/web-interface/nav');
-        console.log(result);
+    mounted(){
+        this.getFollowing()
+        this.getInfo()
     },
-    methods:{}
+    methods:{
+        async getFollowing(){
+            let result = await http.get('proxyApj/x/relation/stat?vmid='+this.$route.params.mid)
+            this.followingData={
+                ...result.data
+            }
+            this.followingData.follower=Number((this.followingData.follower/10000).toFixed(1))
+            console.log(this.followingData);
+        },
+        async getInfo(){
+            let result= await http.get('proxyApjx/space/acc/info?mid='+this.$route.params.mid)
+            console.log(result);
+            this.userInfo={
+                ...result.data
+            }
+            console.log(this.userInfo);
+        },
+        exchangeClick(){
+            this.exchange=!this.exchange
+            this.$emit('exchange',this.exchange)
+        }
+        
+    },
 }
 </script>
 <style lang="stylus" scoped>
@@ -75,5 +100,19 @@ export default {
         color: #fff;
         text-align: center;
         font-size: 4vw;
-        
+    .tabs
+        height: 10.66667vw;
+        line-height: 10.66667vw;
+        padding-left: 3.2vw;
+        background: #fff;
+        border-top: 1px solid #e7e7e7;
+        border-bottom: 1px solid #e7e7e7;
+        font-size: 0;
+        span 
+            display: inline-block;
+            margin-right: 8.53333vw;
+            color: #757575;
+            font-size: 3.46667vw;
+        .on
+            color: #fb7299;
 </style>

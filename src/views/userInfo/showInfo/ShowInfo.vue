@@ -1,19 +1,17 @@
 <template>
     <div class="part1">
         <div class="face">
-            <img src="//i2.hdslb.com/bfs/face/9457aff376cfed02b01a666d0e9eb010f6391180.jpg" class="bfs-img avatar"> 
-            <!-- <img src="//s1.hdslb.com/bfs/static/jinkela/mstation-h5/asserts/icon_Certification_official.png" class="official"> -->
-             <!----> <!---->
+            <img :src="userInfo.face" class="bfs-img avatar"> 
         </div> 
         <div class="relation">
             <div class="count">
                 <span class="fans">
-                    <span class="num">11.6万</span><br> 
+                    <span class="num">{{followingData.follower}}万  </span><br> 
                     <span class="type">粉丝</span>
                 </span> 
                 <span class="split"></span> 
                 <span class="follow">
-                    <span class="num">374</span><br> 
+                    <span class="num">{{followingData.following}}</span><br> 
                     <span class="type">关注</span>
                 </span> 
                 <span class="split"></span> 
@@ -22,24 +20,30 @@
                     <span class="type">获赞</span>
                 </span>
             </div> 
-            <div class="follow-btn">
-                <button class="red">
-                    <i class="yo-ico">&#xe67e;</i> 关注
+            <div class="follow-btn" @click="focusClick">
+                <button :class="focusSt?'gray':'red'">
+                    <i class="yo-ico" v-if="!focusSt">&#xe67e;</i> 
+                    {{focusSt?'已关注':'关注'}}
                 </button>
             </div>
         </div>
     </div>
 </template>
 <script>
+import http from '@a/Utils/http.js'
 export default {
-    
+    props:['followingData','userInfo'],
+    data(){
+        return{
+            focusSt:false
+        }
+    },
     methods:{
-        editClick(){
-            this.$router.push('/spaceDetail')
-        },
+        focusClick(){
+            this.focusSt=!this.focusSt
+        }
     },
     mounted(){
-        // console.log(nfoData);
     }
 }
 </script>
@@ -97,7 +101,10 @@ export default {
                     line-height 8vw
                 .red
                     background: #fb7299;
-                    color: #fff;    
+                    color: #fff;  
+                .gray
+                    background: #e7e7e7;
+                    color: #999;  
                 
 
 </style>

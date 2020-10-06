@@ -18,7 +18,7 @@
               <span>{{model.title}}</span>
             </div>
             <div>
-              <span>{{model.owner.name}}</span>
+              <span @click="pathPush">{{model.owner.name}}</span>
               <span>{{model.stat.view}}次观看</span>
               <span>{{model.stat.danmaku}}弹幕</span>
               <span>09-25</span>
@@ -94,7 +94,13 @@ export default {
       },
       async locationReload(){
        window.location.reload() 
-      }
+      },
+      async pathPush(){
+          if(this.$route.path != `/userInfo/${this.model.owner.mid}`) {
+            this.$router.push(`/userInfo/${this.model.owner.mid}`)
+        }
+          
+      },
   },
      
   
