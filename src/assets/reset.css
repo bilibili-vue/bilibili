@@ -24,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  font-size: 0.16em;
+  font-size: 0.14em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-family: PingFangSC-Regular, Hiragino Sans GB, sans-serif }
@@ -208,7 +208,7 @@ a {
 
 @font-face {
   font-family: yofont;
-  src: url(./icons/iconfont.woff) format("woff"), url(./icons/iconfont.ttf) format("truetype"); 
+  src: url(./icons/theater.woff) format("woff"), url(./icons/theater.ttf) format("truetype"); 
 }
 
 .yo-ico {

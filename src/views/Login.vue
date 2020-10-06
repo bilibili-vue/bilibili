@@ -19,8 +19,10 @@
       @inputChange="res => model.password =res"
 
       />
-
-      <login-btn Btn="登录" @registerSubmit='registerSubmit'></login-btn>
+    <div @click="$router.push('/')">
+        <login-btn Btn="登录" @registerSubmit='registerSubmit'></login-btn>
+    </div>
+      
   </div>
 </template>
 
@@ -56,7 +58,7 @@ export default {
             let rulg=/^.{6,16}$/
             if(rulg.test(this.model.username) && rulg.test(this.model.password)){
                 console.log("正则验证成功");
-                const res = await this.$http.post('/login',this.model)
+                // const res = await this.$http.post('/')
                 console.log(res);
 
                 Toast.success(res.data.msg);
