@@ -30,12 +30,19 @@ module.exports = {
             }
        },
        '/proxyApj': {
-        target: 'https://api.bilibili.com',
-        changeOrigin: true, 
-        pathRewrite: {
-          '^/proxyApj': ''
+          target: 'https://api.bilibili.com',
+          changeOrigin: true, 
+          pathRewrite: {
+            '^/proxyApj': ''
+          }
+        },
+        '/vcApi':{
+          target: 'https://api.vc.bilibili.com',
+          changeOrigin: true, 
+          pathRewrite: {
+            '^/vcApi': ''
+          }
         }
-         },
       }
     }
   }

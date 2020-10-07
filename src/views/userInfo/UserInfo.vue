@@ -12,8 +12,8 @@
             <span :class="{on:!exchange}" @click="exchangeClick">相簿</span>
         </div>
         <div class="list">
-            <active-list v-if="exchange"></active-list>
-            <album-list v-else></album-list>
+            <active-list v-for="(item,index) in vList" :key="index" :vlist="item" :exchange="exchange"></active-list>
+            <album-list :exchange="exchange" v-for="(item,index) in pList" :key="index+new Date().getTime()" :plist="item"></album-list>
         </div>
         <div class="m-space-float-openapp">
             APP内打开
@@ -35,7 +35,9 @@ export default {
         return {
             followingData:{},
             userInfo:{},
-            exchange:1
+            exchange:1,
+            vList:[],
+            pList:[]
         }
     },
     components:{
@@ -49,6 +51,8 @@ export default {
     mounted(){
         this.getFollowing()
         this.getInfo()
+        this.getVList()
+        this.getPList()
     },
     methods:{
         async getFollowing(){
@@ -60,17 +64,38 @@ export default {
             console.log(this.followingData);
         },
         async getInfo(){
-            let result= await http.get('proxyApjx/space/acc/info?mid='+this.$route.params.mid)
+            let result= await http.get('proxyApj/x/space/acc/info?mid='+this.$route.params.mid)
             console.log(result);
             this.userInfo={
-                ...result.data
+                ...result.data,
             }
+            this.userInfo.type=result.data.vip.type
+            this.userInfo.title=result.data.official.title
             console.log(this.userInfo);
+        },
+        async getVList(){
+            let result = await http.get('proxyApj/x/space/arc/search?pn=1&ps=100&order=click&keyword=&mid='+this.$route.params.mid)
+            console.log(result);
+            this.vList=result.data.list.vlist
+            for(var i=0;i<this.vList.length;i++){
+                this.vList[i].play=(this.vList[i].play/10000).toFixed(1)
+                this.vList[i].video_review=(this.vList[i].video_review/10000).toFixed(1)
+            }
+            console.log(this.vList);
+        },
+        async getPList(){
+            let result = await http.get('vcApi/link_draw/v1/Doc/photo_list_ones?uid='+this.$route.params.mid)
+            console.log(result);
+            this.pList=result.data.items
+            for(var i=0;i<this.pList.length;i++){
+                this.pList[i].view=(this.pList[i].view/10000).toFixed(1)
+            }
+            console.log(this.pList);
         },
         exchangeClick(){
             this.exchange=!this.exchange
-            this.$emit('exchange',this.exchange)
-        }
+        },
+
         
     },
 }
@@ -79,6 +104,8 @@ export default {
 @import '~@a/stylus/border.styl'
 @import '~@a/stylus/ellipsis.styl'
 .container
+    overflow-y scroll
+    height 100%
     .content 
         .banner
             width: 100vw;

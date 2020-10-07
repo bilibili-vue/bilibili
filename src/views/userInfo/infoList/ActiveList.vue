@@ -1,30 +1,33 @@
 <template>
-    <div class="archive-list" style=""> 
-        <a href="/video/BV1gK4y187oW" class="video-item-space">
-            <div class="cover">
-                <img src="//i1.hdslb.com/bfs/archive/4f0755d59d99ab1b78a476feb85b43b9a59e5d57.jpg@468w_292h_1c.png" alt="“这份爱 过于沉重”" class="bfs-img"> 
-                <span class="duration">03:16</span>
-            </div> 
-            <div class="info">
-                <h3 class="title">“这份爱 过于沉重”</h3> 
-                <div class="state">
-                    <span class="view">
-                        <i class="iconfont icon-bofangshu"></i>
-                        <span>239.3万</span>
-                    </span> 
-                    <span class="danmaku">
-                        <i class="iconfont icon-danmushu"></i>
-                        <span>7970</span>
-                    </span>
+    <div>
+        <div class="archive-list" v-if="exchange"> 
+            <a :href="`/video/${this.vlist.bvid}`" class="video-item-space">
+                <div class="cover">
+                    <img :src="vlist.pic" :alt="vlist.title" class="bfs-img"> 
+                    <span class="duration">{{vlist.length}}</span>
+                </div> 
+                <div class="info">
+                    <h3 class="title">{{vlist.title}}</h3> 
+                    <div class="state">
+                        <span class="view">
+                            <i class="iconfont icon-bofangshu"></i>
+                            <span>{{vlist.play}}万</span>
+                        </span> 
+                        <span class="danmaku">
+                            <i class="iconfont icon-danmushu"></i>
+                            <span>{{vlist.video_review}}万</span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <empty></empty>
-    </div> 
+            </a>
+            <empty></empty>
+        </div> 
+    </div>
 </template>
 <script>
 import Empty from './Empty'
 export default {
+    props:['vlist','exchange'],
     components:{
         Empty
     }

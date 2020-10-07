@@ -8,11 +8,11 @@
             <span class="level">
                 <i :class="['iconfont',`icon-ic_userlevel_${this.userInfo.level}`]" style="color: rgb(255, 0, 0);"></i>
             </span> 
-            <span class="vip" v-if="userInfo.vip.type===2">年度大会员</span> 
+            <span class="vip" v-if="userInfo.type===2">年度大会员</span> 
             </div> 
             <div class="verify">
                 <img src="//s1.hdslb.com/bfs/static/jinkela/mstation-h5/asserts/icon_Certification_official.png" class="official"> 
-                <span :class="{spread:pickSt}">bilibili UP主认证：{{userInfo.official.title}}</span> 
+                <span :class="{spread:pickSt}">bilibili UP主认证：{{userInfo.title}}</span> 
                 <a class="spread-btn" @click="changeSt">{{pickSt?"收起":"展开"}}</a>
             </div> 
             <div class="desc">
@@ -21,7 +21,7 @@
             </div> 
             <div class="tags" v-if="pickSt">
                 <span>粉丝勋章</span> 
-                <span>uid:11255948</span>
+                <span>uid:{{userInfo.mid}}</span>
             </div> 
             <div class="clearfloat"></div>
         </div>
@@ -37,8 +37,8 @@ export default {
     methods:{
         changeSt(){
             this.pickSt=!this.pickSt
-        }
-    }
+        },
+    },
 }
 </script>
 <style lang="stylus" scoped>
