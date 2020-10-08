@@ -19,7 +19,7 @@
             </div>
             <div>
               <span @click="pathPush">{{model.owner.name}}</span>
-              <span>{{model.stat.view}}次观看</span>
+              <span>{{model.stat.view>10000?(model.stat.view/10000).toFixed(1)+"万":model.stat.view}}次观看</span>
               <span>{{model.stat.danmaku}}弹幕</span>
               <span>09-25</span>
             </div>
@@ -77,6 +77,7 @@ export default {
        let res = await http.get ('/proxyApj/x/web-interface/view/detail?aid=&bvid='+this.$route.params.bvid);
        this.model = res.data.View;
        console.log(this.model);
+       console.log(this.model.pic);
        this.commendData(this.model);
     },
       async commendData(model) {

@@ -1,6 +1,6 @@
 <template>
     <div class="album-list" style="" v-if="!exchange">
-        <a href="//www.bilibili.com/p/h5/60645976" target="_blank" class="album-item-space">
+        <a href="#" target="_blank" class="album-item-space">
             <div class="cover">
                 <img :src="plist.pictures[0].img_src" alt="" class="bfs-img"> 
                 <!---->
@@ -10,11 +10,11 @@
                 <div class="state">
                     <span class="view">
                         <i class="iconfont icon-zhiboguankanshu"></i>
-                        <span>{{plist.view}}万</span>
+                        <span>{{plist.view>10000?(plist.view/10000).toFixed(1)+"万":plist.view}}</span>
                     </span> 
                     <span class="danmaku">
                         <i class="iconfont icon-_ico_reply"></i>
-                        <span>{{plist.comment}}</span>
+                        <span>{{plist.comment>10000?(plist.comment/10000).toFixed(1)+"万":plist.comment}}</span>
                     </span>
                 </div>
             </div>

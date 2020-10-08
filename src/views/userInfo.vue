@@ -57,7 +57,6 @@ export default {
             this.followingData={
                 ...result.data
             }
-            this.followingData.follower=Number((this.followingData.follower/10000).toFixed(1))
             console.log(this.followingData);
         },
         async getInfo(){
@@ -74,24 +73,18 @@ export default {
             let result = await http.get('proxyApj/x/space/arc/search?pn=1&ps=100&order=click&keyword=&mid='+this.$route.params.mid)
             console.log(result);
             this.vList=result.data.list.vlist
-            for(var i=0;i<this.vList.length;i++){
-                this.vList[i].play=(this.vList[i].play/10000).toFixed(1)
-                this.vList[i].video_review=(this.vList[i].video_review/10000).toFixed(1)
-            }
             console.log(this.vList);
         },
         async getPList(){
             let result = await http.get('vcApi/link_draw/v1/Doc/photo_list_ones?uid='+this.$route.params.mid)
             console.log(result);
             this.pList=result.data.items
-            for(var i=0;i<this.pList.length;i++){
-                this.pList[i].view=(this.pList[i].view/10000).toFixed(1)
-            }
             console.log(this.pList);
         },
         exchangeClick(){
             this.exchange=!this.exchange
         },
+
         
     },
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="archive-list" v-if="exchange"> 
-            <a :href="`/video/${this.vlist.bvid}`" class="video-item-space">
+            <a @click="pathPush" class="video-item-space">
                 <div class="cover">
                     <img :src="vlist.pic" :alt="vlist.title" class="bfs-img"> 
                     <span class="duration">{{vlist.length}}</span>
@@ -11,11 +11,11 @@
                     <div class="state">
                         <span class="view">
                             <i class="iconfont icon-bofangshu"></i>
-                            <span>{{vlist.play}}万</span>
+                            <span>{{vlist.play>10000?(vlist.play/10000).toFixed(1)+"万":vlist.play}}</span>
                         </span> 
                         <span class="danmaku">
                             <i class="iconfont icon-danmushu"></i>
-                            <span>{{vlist.video_review}}万</span>
+                            <span>{{vlist.video_review>10000?(vlist.video_review/10000).toFixed(1)+"万":vlist.video_review}}</span>
                         </span>
                     </div>
                 </div>
@@ -30,6 +30,13 @@ export default {
     props:['vlist','exchange'],
     components:{
         Empty
+    },
+    methods:{
+        async pathPush(){
+             if(this.$route.path != `/article/${this.vlist.bvid}`) {
+                this.$router.push(`/article/${this.vlist.bvid}`)
+            }
+         },
     }
 }
 </script>
