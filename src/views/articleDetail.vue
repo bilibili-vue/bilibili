@@ -19,7 +19,7 @@
             </div>
             <div>
               <span @click="pathPush">{{model.owner.name}}</span>
-              <span>{{model.stat.view}}次观看</span>
+              <span>{{model.stat.view>10000?(model.stat.view/10000).toFixed(1)+"万":model.stat.view}}次观看</span>
               <span>{{model.stat.danmaku}}弹幕</span>
               <span>09-25</span>
             </div>
