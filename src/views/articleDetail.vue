@@ -77,6 +77,7 @@ export default {
        let res = await http.get ('/proxyApj/x/web-interface/view/detail?aid=&bvid='+this.$route.params.bvid);
        this.model = res.data.View;
        console.log(this.model);
+       console.log(this.model.pic);
        this.commendData(this.model);
     },
       async commendData(model) {

@@ -167,13 +167,6 @@ export const category = [
       ]
     },
     {
-      name: '广告',
-      rid: 165,
-      blocks: [
-        { name: '推荐', rid: 165 }
-      ]
-    },
-    {
       name: '纪录片',
       rid: 177,
       blocks: [
@@ -204,7 +197,5 @@ export const category = [
         { name: '海外剧', rid: 187 }
       ]
     },
-    { name: '直播', rid: -1 },
-    { name: '相簿', rid: -2 }
   ]
   

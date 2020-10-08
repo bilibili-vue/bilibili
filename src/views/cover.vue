@@ -6,7 +6,7 @@
                <img :src="detailitem.pic"  alt="" style="width:100%;height:27.778vw;">
               <div class="bottom">
                   <div class="icon-play2"><span class="video">{{detailitem.stat.view>10000?(detailitem.stat.view/10000).toFixed(1)+"万":detailitem.stat.view}}</span></div>
-                  <div class="icon-file-text"> <span class="comment">{{!detailitem.stat.danmaku ? 66 : detailitem.stat.danmaku}}</span> </div>
+                  <div class="icon-file-text"> <span class="comment">{{detailitem.stat.danmaku>10000?(detailitem.stat.danmaku/10000).toFixed(1)+"万":detailitem.stat.danmaku}}</span> </div>
               </div>
           </div>
           <p>{{detailitem.title}}</p>

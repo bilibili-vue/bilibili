@@ -4,7 +4,7 @@
         <van-tabs color="#fb7299" class="nav" @click="changeContent1" >
            <van-tab v-for="(item1,index1) in category" :key="index1" :title="item1.name" >
               <!-- 内容 {{ index }}  -->
-              <div class="carouselBox" v-if=!index1>
+              <div class="carouselBox" v-if=!item1.rid>
                 <lunbo></lunbo>
               </div>
               <van-tabs color="#fb7299" :class="{navtwo:!index1}" @click="changeContent" > 
@@ -58,6 +58,8 @@ export default {
   methods:{
        async changeContent1(title){
          console.log(title)
+        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid='+this.category[title].rid+'&ps=20')
+        this.commendList = res.data.archives 
          this.navitem1=this.category[title].blocks
          console.log(this.navitem1)
        },
