@@ -1,10 +1,32 @@
 <template>
   <div class="home">
-      home
       <nav-bar></nav-bar> 
-      <div class="detailparent">
+        <van-tabs color="#fb7299" class="nav"  >
+           <van-tab v-for="(item1,index1) in category" :key="index1" :title="item1.name" >
+              <!-- 内容 {{ index }}  -->
+              <div class="carouselBox" v-if=!index1>
+                <lunbo></lunbo>
+              </div>
+              <van-tabs color="#fb7299" :class="{navtwo:!index1}" @click="changeContent(item1)" > 
+                <van-tab v-for="(item2,index2) in item1.blocks" :key="index2" :title="item2.name">
+                  
+                </van-tab>
+              </van-tabs> 
+          </van-tab>      
+        </van-tabs>
+                      <div class="detailparent">
+                        <!--  <cover class="detailitem" v-for="(item,index) in commendList" :key="index"  :detailitem="item"/> -->
+                        <cover
+                            class="detailitem"
+                            :detailitem="categoryitem"
+                            v-for="(categoryitem,categoryindex) in commendList"
+                            :key="categoryindex"
+                          />
+                      </div>
+
+      <!-- <div class="detailparent">
            <cover class="detailitem" v-for="(item,index) in commendList" :key="index"  :detailitem="item"/>
-      </div>
+      </div> -->
   </div>
 </template>
 
@@ -12,25 +34,52 @@
 import http from "../assets/Utils/http"
 import navBar from '../components/common/navBar.vue'
 import cover from './cover'
-// import axios from 'axios' 
+import lunbo from '../components/common/lunbo'
+import axios from 'axios' 
+import { category } from '../api/config' 
+
+import Vue from 'vue';
+import { Tab, Tabs } from 'vant';
+
+Vue.use(Tab);
+Vue.use(Tabs);
+
+
 
 
 export default {
    data(){
       return{
         commendList:null,
+         category,
+         navActive:0
       }
+  },
+  methods:{
+       async changeContent(item1){
+        console.log(item1.rid)
+        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid='+item1.rid+'&ps=20');
+        this.commendList = res.data.archives
+      } ,
+     
+     
   },
     components:{
     navBar,
-    cover
+    cover,
+    lunbo
   }, 
   async mounted(){
-     let res = await http.get('/proxyApj/x/web-interface/archive/related?from=h5&aid=797311705&context=')
+     /* let res = await http.get('/proxyApj/x/web-interface/archive/related?from=h5&aid=797311705&context=')
         this.model = res.data[0]
         console.log(this.model)
         this.commendList = res.data
-        console.log(this.commendList) 
+        console.log(this.commendList)  */
+       
+
+       let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid=24&ps=20');
+      this.commendList = res.data.archives
+      
   }
 }
 </script>
@@ -40,7 +89,14 @@ export default {
   height 177.867vw
   white-space pre-wrap
   overflow-y scroll
- .detailparent
+  .nav
+    color #000
+    .carouselBox
+      height 37.733vw
+      background #ccc
+    .navtwo
+      display none
+  .detailparent
     white-space pre-wrap
     display flex
     flex-wrap wrap
