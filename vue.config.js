@@ -1,8 +1,3 @@
-/* webpack也是基于node开发的 ，用webpack在当前环境直接做做代理，不用node
-
-
-
-*/
 
 module.exports = {
     devServer: {
