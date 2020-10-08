@@ -1,15 +1,9 @@
 <template>
-  <!-- <div class="container">
-      <nav-bar></nav-bar>
-      aiticleDetail
-  </div> -->
   <div class="articleDetail">
     <nav-bar></nav-bar>
     <div class="detailinfo">
         <div class="video">
               <img  :src="model.pic"> 
-             <!-- <video controls="controls" :src="playSrc"></video>  -->
-             <!-- <iframe class="player-wrapper" src="https://www.baidu.com/" scrolling="no" frameborder=20 ></iframe> -->
               <iframe class="player-wrapper" :src="`https://player.bilibili.com/player.html?aid=${this.model.aid}&bvid=${this.model.bvid}&cid=${this.model.cid}&page=1` " scrolling="no" frameborder=20> </iframe>
         </div>
         <div class="detailinfoText">
@@ -102,35 +96,8 @@ export default {
       },
   },
      
-  
-  
- /*  methods:{
-    async articleitemData(){
-       let res = await get ("/details");
-       this.model = res.data[0];
-       console.log(this.model);
-    },
-    async commendData() {
-        let res = await get ("/details");
-        this.commendList = res.data;
-        console.log(this.commendList);
-        },
-  }, */
    async mounted(){
-      /* let res = await http.get('/proxyApj/x/web-interface/archive/related?from=h5&aid='+797311705+'&context=')
-        this.model = res.data[0]
-        console.log(this.model)
-        this.commendList = res.data
-        console.log(this.commendList) */
           this.articleitemData()  
-         /*  this.commendData()  */ 
-          
-      /*  fetch('/proxyApi/x/web-interface/ranking/region?rid=24&day=7&context=')
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-      })  */
-      
       
    }
   

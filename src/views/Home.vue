@@ -78,13 +78,6 @@ export default {
     lunbo
   }, 
   async mounted(){
-     /* let res = await http.get('/proxyApj/x/web-interface/archive/related?from=h5&aid=797311705&context=')
-        this.model = res.data[0]
-        console.log(this.model)
-        this.commendList = res.data
-        console.log(this.commendList)  */
-       
-
        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid=24&ps=20');
       this.commendList = res.data.archives
       
