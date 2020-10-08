@@ -15,9 +15,6 @@
             <active-list v-for="(item,index) in vList" :key="index" :vlist="item" :exchange="exchange"></active-list>
             <album-list :exchange="exchange" v-for="(item,index) in pList" :key="index+new Date().getTime()" :plist="item"></album-list>
         </div>
-        <div class="m-space-float-openapp">
-            APP内打开
-        </div>
         <space-footer style="display:none"></space-footer>
     </div>
 </template>
@@ -114,19 +111,6 @@ export default {
             background: url(//s1.hdslb.com/bfs/static/jinkela/mstation-h5/asserts/bannerTop_new.png);
             background-size: cover;
             background-position: 50%;
-    .m-space-float-openapp
-        position: fixed;
-        bottom: 7.46667vw;
-        z-index: 15;
-        width: 32.26667vw;
-        height: 10.13333vw;
-        line-height: 10.13333vw;
-        border-radius: 6.66667vw;
-        left: 30.66667vw;
-        background: #fb7299;
-        color: #fff;
-        text-align: center;
-        font-size: 4vw;
     .tabs
         height: 10.66667vw;
         line-height: 10.66667vw;
