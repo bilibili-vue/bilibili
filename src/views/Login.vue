@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import LoginTop from '@/components/common/LoginTop.vue'
-import LoginText from '@/components/common/LoginText.vue'
-import LoginBtn from '@/components/common/LoginBtn.vue'
+import LoginTop from '@/components/login/LoginTop.vue'
+import LoginText from '@/components/login/LoginText.vue'
+import LoginBtn from '@/components/login/LoginBtn.vue'
 
 import Vue from 'vue';
 import { Toast } from 'vant';

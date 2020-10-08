@@ -23,6 +23,13 @@ module.exports = {
           '^/proxyApj': ''
         }
          },
+         '/vcApi':{
+          target: 'https://api.vc.bilibili.com',
+          changeOrigin: true, 
+          pathRewrite: {
+            '^/vcApi': ''
+          }
+        }
       }
     }
   }
