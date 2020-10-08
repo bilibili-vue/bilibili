@@ -57,7 +57,6 @@ export default {
             this.followingData={
                 ...result.data
             }
-            this.followingData.follower=Number((this.followingData.follower/10000).toFixed(1))
             console.log(this.followingData);
         },
         async getInfo(){
@@ -85,6 +84,7 @@ export default {
         exchangeClick(){
             this.exchange=!this.exchange
         },
+
         
     },
 }

@@ -6,7 +6,7 @@
         <div class="relation">
             <div class="count">
                 <span class="fans">
-                    <span class="num">{{followingData.follower}}万  </span><br> 
+                    <span class="num">{{followingData.follower>10000?(followingData.follower/10000).toFixed(1)+"万":followingData.follower}} </span><br> 
                     <span class="type">粉丝</span>
                 </span> 
                 <span class="split"></span> 

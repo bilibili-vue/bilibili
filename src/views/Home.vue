@@ -1,15 +1,14 @@
 <template>
   <div class="home">
       <nav-bar></nav-bar> 
-        <van-tabs color="#fb7299" class="nav"  >
+        <van-tabs color="#fb7299" class="nav" @click="changeContent1" >
            <van-tab v-for="(item1,index1) in category" :key="index1" :title="item1.name" >
               <!-- 内容 {{ index }}  -->
-              <div class="carouselBox" v-if=!index1>
+              <div class="carouselBox" v-if=!item1.rid>
                 <lunbo></lunbo>
               </div>
-              <van-tabs color="#fb7299" :class="{navtwo:!index1}" @click="changeContent(item1)" > 
+              <van-tabs color="#fb7299" :class="{navtwo:!index1}" @click="changeContent" > 
                 <van-tab v-for="(item2,index2) in item1.blocks" :key="index2" :title="item2.name">
-                  
                 </van-tab>
               </van-tabs> 
           </van-tab>      
@@ -52,14 +51,23 @@ export default {
       return{
         commendList:null,
          category,
-         navActive:0
+         navActive:0,
+         navitem1:[]
       }
   },
   methods:{
-       async changeContent(item1){
-        console.log(item1.rid)
-        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid='+item1.rid+'&ps=20');
-        this.commendList = res.data.archives
+       async changeContent1(title){
+         console.log(title)
+        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid='+this.category[title].rid+'&ps=20')
+        this.commendList = res.data.archives 
+         this.navitem1=this.category[title].blocks
+         console.log(this.navitem1)
+       },
+       async changeContent(title){
+        console.log(this.navitem1[title].rid)
+        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid='+this.navitem1[title].rid+'&ps=20');
+        console.log(res);
+        this.commendList = res.data.archives 
       } ,
      
      
@@ -70,13 +78,6 @@ export default {
     lunbo
   }, 
   async mounted(){
-     /* let res = await http.get('/proxyApj/x/web-interface/archive/related?from=h5&aid=797311705&context=')
-        this.model = res.data[0]
-        console.log(this.model)
-        this.commendList = res.data
-        console.log(this.commendList)  */
-       
-
        let res = await http.get ('/proxyApi/x/web-interface/dynamic/region?rid=24&ps=20');
       this.commendList = res.data.archives
       
