@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="archive-list" v-if="exchange"> 
-            <a :href="`/article/${this.vlist.bvid}`" class="video-item-space">
+            <a :href="`/video/${this.vlist.bvid}`" class="video-item-space">
                 <div class="cover">
                     <img :src="vlist.pic" :alt="vlist.title" class="bfs-img"> 
                     <span class="duration">{{vlist.length}}</span>
