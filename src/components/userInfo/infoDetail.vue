@@ -9,6 +9,7 @@
                 <i :class="['iconfont',`icon-ic_userlevel_${this.userInfo.level}`]" style="color: rgb(255, 0, 0);"></i>
             </span> 
             <span class="vip" v-if="userInfo.type===2">年度大会员</span> 
+            <span class="vip" v-else-if="userInfo.type===1">大会员</span>
             </div> 
             <div class="verify">
                 <img src="//s1.hdslb.com/bfs/static/jinkela/mstation-h5/asserts/icon_Certification_official.png" class="official"> 
