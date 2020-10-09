@@ -33,9 +33,9 @@ export default {
         height 11.73333vw
         display flex
         background-color white
-        padding 0 .12rem 0 .18rem
+        padding 0 3.2vw 0 4.8vw
         >div:nth-child(1)
-            width .61rem
+            width 16.267vw
             display flex
             justify-content center
             text-align center
@@ -45,23 +45,23 @@ export default {
             flex 1
             display flex
         >div:nth-child(3)
-            width 1.70rem
+            width 45.333vw
             display flex
-            padding-top:.1rem
+            padding-top:2.667vw
             justify-content space-between
             .iconNav
                
             .user-img
-                width .24rem
-                height .24rem
+                width 6.4vw
+                height 6.4vw
             .rapp
-                width .82rem
-                height .24rem
+                width 21.867vw
+                height 6.4vw
                 background #fb7299
                 color #ffffff
-                border-radius .04rem
+                border-radius 1.067vw
                 text-align center
-                line-height .24rem
+                line-height 6.4vw
 
 
                 

@@ -93,8 +93,8 @@ export default {
   .nav
     color #000
     .carouselBox
-      height 37.733vw
-      background #ccc
+      height 29.733vw
+      
     .navtwo
       display none
   .detailparent
